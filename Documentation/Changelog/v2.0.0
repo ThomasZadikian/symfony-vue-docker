@@ -1,0 +1,48 @@
+News : 
+
+Developer's notes : 
+This version 2.0.0 have a lot of breaking change. You can see all the changes below but this version if a way better. 
+The architecture is now correctly separated, unit test are here for both back and front
+In the "Documentation" folders you can see the CHANGELOG files
+
+Code quality :
+
+- Create unit test with phpunit and configure phpunit.xml.dist
+    - Create all tests for every functionnality
+- Modify CreateUserUseCase
+    - Removed the direct dependency on the Infrastructure by introducing an interface (bridge) between the 
+        Application and Infrastructure via the Domain for better adherence to Clean Architecture principles.
+- Modify UserController
+    - Changed the repository dependency injection to use the UserRepositoryInterface instead of the concrete UserRepository.
+    - Injected a minimal container in tests to support AbstractController’s container-based methods.
+- Modify CreateUserResponse
+    - Updated the response class to store and return the original User instance, ensuring proper JSON serialization.
+- General improvement of clean architecture
+    - Enforced a clear separation of responsibilities:
+        - The Application layer now relies exclusively on the Domain layer.
+        - The Infrastructure layer now relies exclusively on the Domain layer.
+- Unit test for front end create 
+
+Documentation : 
+- Updating CHANGELOG
+
+Configuration : 
+- Running npm audit
+- Running composer audit
+
+[Testing]
+- Run composer fix in ./api
+- Run composer test in ./api
+- Run npm run test in ./client
+
+[What's next]
+
+In the next version (between 2.0.0 and 2.0.9), you will find (-> this list will be update frequently if necessary) : 
+
+- Exception and Error's message
+- .env for both front and back 
+- Documentation for best practice and usage (probably in the 2.0.1 version)
+- Integration of i18n with a language selector
+- fix "npm run lint"
+
+For the 3.x version, i will add docker and update dependency if necessary

@@ -1,0 +1,21 @@
+{
+  "name": "create-symfony-vue",
+  "version": "2.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently \"cd frontend && yarn dev\" \"cd symfony && symfony server:start\"",
+    "stop": "symfony server:stop",
+    "build": "vite build",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "bin": {
+    "create-symfony-vue": "./bin/create-symfony-vue.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "degit": "^2.8.1"
+  }
+}

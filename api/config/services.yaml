@@ -1,0 +1,19 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    # Insert here all UseCases with repo in arguments -> 
+    App\Application\UseCases\CreateUserUseCase: 
+            
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\UI\Controller\:
+        resource: '../src/UI/Controller/*'
+        tags: ['controller.service_arguments']
+        public: true

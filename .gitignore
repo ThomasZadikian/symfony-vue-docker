@@ -1,0 +1,38 @@
+# Globals
+node_modules
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.tmp
+*.swp
+*.lock
+.env
+.env.local
+.env.*.local
+
+# Front-end
+client/node_modules
+client/build
+client/.yarn
+client/.cache
+client/.env
+client/.env.local
+client/.env.development.local
+client/.env.production.local
+
+# Symfony
+api/var
+api/vendor
+api/var/cache
+api/var/log
+api/public/build
+api/public/bundles
+
+api/.env
+api/.env.local
+api/.env.dev
+api/.env.test
+api/.env.prod

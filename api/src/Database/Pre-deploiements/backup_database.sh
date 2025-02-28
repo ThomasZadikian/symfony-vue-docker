@@ -1,1 +1,0 @@
-mysqldump -u your_user -p your_database > backup_$(date +%Y%m%d).sql

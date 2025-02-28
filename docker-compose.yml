@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  api:
+    build: ./api
+    container_name: symfony_api
+    volumes:
+      - ./api:/var/www/api
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=dev
+      - DATABASE_URL=mysql://db_user:db_password@db:3306/db_name
+
+  client:
+    build: ./client
+    container_name: vue_client
+    volumes:
+      - ./client:/var/www/client
+      - /var/www/client/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+
+  db:
+    build: ./database
+    container_name: mysql_db
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

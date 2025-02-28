@@ -26,9 +26,7 @@ class CreateUserUseCase
             return $user->getId();
         }, $users);
 
-        // Existing because of a fake database
-        $newId = count($ids) > 0 ? max($ids) + 1 : 1;
-        $newUser = new User($newId, $request->getName());
+        $newUser = new User(null, $request->getName());
 
         $this->userRepository->saveUser($newUser);
 

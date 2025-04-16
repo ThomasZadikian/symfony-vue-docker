@@ -25,11 +25,11 @@ class UserController extends AbstractController
         $this->userRepository = $userRepository;
     }
 
-    #[Route('/api/users', methods: ['GET'])]
+    #[Route('/api/users', methods: ['GET', 'OPTIONS'])]
     public function getUsers(): JsonResponse
     {
         $users = $this->userRepository->getUsers();
-        $userDtos = array_map(fn ($user) => UserDto::fromEntity($user), $users);
+        $userDtos = array_map(fn($user) => UserDto::fromEntity($user), $users);
         return $this->json($userDtos);
     }
 

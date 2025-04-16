@@ -1,0 +1,7 @@
+[Code]
+
+[Functionality]
+
+- Add Docker (not fully functionnal yet)
+    - Docker files in api, client and database 
+    - docker-compose file 

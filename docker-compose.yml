@@ -9,6 +9,8 @@ services:
     environment:
       - APP_ENV=dev
       - DATABASE_URL=mysql://db_user:db_password@db:3306/db_name
+    networks:
+      - app-network
 
   client:
     build: ./client
@@ -20,6 +22,8 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
+    networks:
+      - app-network
 
   db:
     build: ./database
@@ -29,6 +33,12 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+    networks:
+      - app-network
 
 volumes:
   db_data:
+
+networks:
+  app-network:
+    driver: bridge

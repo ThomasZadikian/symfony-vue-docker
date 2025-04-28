@@ -17,7 +17,7 @@ class UserUseCase {
     }
 
     try {
-      const newUser = await userApi.createUser(name.trim());
+      const newUser = await userApi.addUser(name.trim());
       return newUser;
     } catch (error) {
       console.error('Error adding user:', error);

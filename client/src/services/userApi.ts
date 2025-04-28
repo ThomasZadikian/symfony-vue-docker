@@ -40,7 +40,7 @@ export const userApi = {
 
   async addUser(name: string): Promise<User> {
     try {
-      const response = await axios.post('api/users', { name });
+      const response = await axiosInstance.post('api/users', { name });
       return response.data;
     } catch (error) {
       console.error('Error adding user:', error);

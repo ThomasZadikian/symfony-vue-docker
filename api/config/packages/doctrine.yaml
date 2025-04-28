@@ -1,5 +1,12 @@
 doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+        # server_version: '8.0'   # votre MySQL
     orm:
         auto_generate_proxy_classes: true
-        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
-        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: attribute   # (ou annotation/yaml si vous préférez)
+                dir: '%kernel.project_dir%/src/Domain/Entity'
+                prefix: 'App\Domain\Entity'

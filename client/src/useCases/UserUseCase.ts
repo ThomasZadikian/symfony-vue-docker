@@ -1,12 +1,29 @@
-import { userApi } from '@/services/userApi';
-import { User } from '@/models/User';
+import { User } from '../models/User';
+import { userApi } from '../services/userApi';
 
-export const userUseCase = {
+class UserUseCase {
   async fetchUsers(): Promise<User[]> {
-    return await userApi.getUsers();
-  },
+    try {
+      return await userApi.getUsers();
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      return [];
+    }
+  }
 
   async addUser(name: string): Promise<User> {
-    return await userApi.createUser(name);
-  },
-};
+    if (!name || name.trim() === '') {
+      throw new Error('User name cannot be empty');
+    }
+
+    try {
+      const newUser = await userApi.createUser(name.trim());
+      return newUser;
+    } catch (error) {
+      console.error('Error adding user:', error);
+      throw error;
+    }
+  }
+}
+
+export const userUseCase = new UserUseCase();

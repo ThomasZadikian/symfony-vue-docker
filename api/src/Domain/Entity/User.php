@@ -6,30 +6,29 @@ namespace App\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity()
- * @ORM\Table(name="users")
- */
-
+#[ORM\Entity]
+#[ORM\Table(name: 'users')]
 class User
 {
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
-    private ?int $id;
+    #[ORM\Column(type: 'string', length: 100)]
+    private string $name;
 
-    private ?string $name;
-
-    public function __construct(?int $id = null, string $name = '')
+    public function __construct(string $name = '')
     {
-        $this->id = $id;
         $this->name = $name;
     }
 
-    public function getID(): ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }

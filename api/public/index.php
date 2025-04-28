@@ -1,10 +1,16 @@
 <?php
 
 declare(strict_types=1);
-error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
+error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
 use App\Kernel;
+
+// CORS Headers - Applied globally to all routes
+header('Access-Control-Allow-Origin: http://localhost:3000');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+header('Access-Control-Allow-Credentials: true');
 
 require_once dirname(__DIR__) . '/vendor/autoload_runtime.php';
 

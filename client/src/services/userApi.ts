@@ -5,16 +5,6 @@ const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/',
 });
 
-const API_URL = 'http://localhost:8000/api/users';
-
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-let users: User[] = [
-  { name: 'Thomas Zadikian' },
-  { name: 'Maiekod Enterprise' },
-  { name: 'Fake User Stop Here' },
-];
-
 export const userApi = {
   async getUsers(): Promise<User[]> {
     try {
@@ -38,10 +28,9 @@ export const userApi = {
     }
   },
 
-  async addUser(name: string): Promise<User> {
+  async addUser(name: string): Promise<void> {
     try {
       const response = await axiosInstance.post('api/users', { name });
-      return response.data;
     } catch (error) {
       console.error('Error adding user:', error);
       throw error;

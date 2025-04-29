@@ -20,16 +20,8 @@ class CreateUserUseCase
 
     public function execute(CreateUserRequest $request): CreateUserResponse
     {
-        $users = $this->userRepository->getUsers();
-
-        $ids = array_map(static function (User $user): int {
-            return $user->getId();
-        }, $users);
-
-        $newUser = new User(null, $request->getName());
-
+        $newUser = new User($request->getName());
         $this->userRepository->saveUser($newUser);
-
         return new CreateUserResponse($newUser);
     }
 }

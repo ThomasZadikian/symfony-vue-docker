@@ -12,8 +12,9 @@ onMounted(() => {
 async function addUser() {
   if (newUserName.value.trim()) {
     await userStore.addUser(newUserName.value);
-    newUserName.value = '';
+    userStore.isLoading = true;
   }
+  userStore.loadUsers();
 }
 </script>
 
@@ -49,10 +50,10 @@ async function addUser() {
     </div>
 
     <ul v-else class="user-list">
-      <li v-for="user in userStore.users" :key="user.id" class="user-item">
+      <li v-for="(user, index) in userStore.users" :key="user?.id || index" class="user-item">
         <div class="user-details">
-          <span class="user-name">{{ user.name }}</span>
-          <span class="user-id">ID: {{ user.id }}</span>
+          <span class="user-name">{{ user?.name || 'Création en cours...' }}</span>
+          <span class="user-id">ID: {{ user?.id || "Attribution d'un ID en cours" }}</span>
         </div>
       </li>
     </ul>

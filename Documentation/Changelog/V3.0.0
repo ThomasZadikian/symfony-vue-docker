@@ -1,0 +1,81 @@
+[Structure du projet]
+Modifications principales
+
+[Refactorisation du code]
+
+Amélioration de la structure du code PHP
+Nettoyage des composants Vue.js
+Optimisation des configurations Docker
+
+[Améliorations de la propreté du code
+]
+Standardisation des pratiques de codage
+Élimination du code redondant
+Amélioration de la lisibilité
+
+
+[Modifications par catégorie]
+
+[Backend (Symfony)]
+
+Restructuration du code PHP
+
+Normalisation des entêtes PHP avec declare(strict_types=1)
+Amélioration de la gestion des erreurs
+Refactorisation des contrôleurs pour suivre les principes SOLID
+
+
+[Gestion des CORS]
+
+Correction de l'implémentation des entêtes CORS
+Réorganisation logique du code de gestion des CORS
+Amélioration de la sécurité des origines croisées
+
+
+[Configuration API]
+
+Optimisation des routes API
+Amélioration de la validation des données
+Standardisation des réponses JSON
+
+
+
+[Frontend (Vue.js)]
+
+[Composants Vue]
+
+Refactorisation des composants pour une meilleure réutilisabilité
+Conversion de certains composants vers la Composition API
+Nettoyage des props et des émissions d'événements
+
+
+[Gestion de l'état]
+
+Optimisation des stores (Vuex/Pinia)
+Amélioration de la gestion des états globaux
+Meilleure séparation des préoccupations
+
+
+[Style et UI]
+
+Standardisation des styles CSS/SCSS
+Amélioration de la cohérence visuelle
+Optimisation de la responsive design
+
+
+
+[Infrastructure (Docker)]
+Intégration d'un docker entièrement fonctionnel dès le lancement de l'application
+
+[Configuration Docker] 
+
+Optimisation des Dockerfiles pour chaque service
+Mise à jour des configurations docker-compose
+Amélioration de la gestion des volumes et des réseaux
+
+
+[Performance]
+
+Réduction de la taille des images Docker
+Optimisation des layers Docker
+Amélioration des temps de build

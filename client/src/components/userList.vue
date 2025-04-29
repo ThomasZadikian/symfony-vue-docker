@@ -12,14 +12,15 @@ onMounted(() => {
 async function addUser() {
   if (newUserName.value.trim()) {
     await userStore.addUser(newUserName.value);
-    newUserName.value = '';
+    userStore.isLoading = true;
   }
+  userStore.loadUsers();
 }
 </script>
 
 <template>
   <div class="user-list-container">
-    <h2>User Management</h2>
+    <h2>Gestionnaire des utilisateurs</h2>
 
     <div class="user-form">
       <input
@@ -34,7 +35,7 @@ async function addUser() {
         :disabled="userStore.isLoading || !newUserName.trim()"
         class="add-button"
       >
-        {{ userStore.isLoading ? 'Adding...' : 'Add User' }}
+        {{ userStore.isLoading ? 'Création...' : 'Ajouter utilisateur' }}
       </button>
     </div>
 
@@ -49,10 +50,10 @@ async function addUser() {
     </div>
 
     <ul v-else class="user-list">
-      <li v-for="user in userStore.users" :key="user.id" class="user-item">
+      <li v-for="(user, index) in userStore.users" :key="user?.id || index" class="user-item">
         <div class="user-details">
-          <span class="user-name">{{ user.name }}</span>
-          <span class="user-id">ID: {{ user.id }}</span>
+          <span class="user-name">{{ user?.name || 'Création en cours...' }}</span>
+          <span class="user-id">ID: {{ user?.id || "Attribution d'un ID en cours" }}</span>
         </div>
       </li>
     </ul>

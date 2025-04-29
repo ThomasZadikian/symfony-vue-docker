@@ -20,7 +20,7 @@ async function addUser() {
 
 <template>
   <div class="user-list-container">
-    <h2>User Management</h2>
+    <h2>Gestionnaire des utilisateurs</h2>
 
     <div class="user-form">
       <input
@@ -35,7 +35,7 @@ async function addUser() {
         :disabled="userStore.isLoading || !newUserName.trim()"
         class="add-button"
       >
-        {{ userStore.isLoading ? 'Adding...' : 'Add User' }}
+        {{ userStore.isLoading ? 'Création...' : 'Ajouter utilisateur' }}
       </button>
     </div>
 

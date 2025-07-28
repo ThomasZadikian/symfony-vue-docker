@@ -1,4 +1,4 @@
-#------- Create Symfony-vue scaffold version 3.0.0 -------#
+#------- Create Symfony-vue scaffold version 4.0.0 -------#
 
 A minimal scaffolding tool to quickly start a Symfony (API) + Vue (frontend) project with Vuetify.
 
@@ -23,15 +23,7 @@ create-symfony-vue
 
 #------- Usage -------#
 
-- api (localhost:8000)
-
-cd ./api 
-symfony server:start
-
-- client (locahost:3000)
-
-cd ./client
-npm run dev
+docker-compose up --build
 
 - License
 

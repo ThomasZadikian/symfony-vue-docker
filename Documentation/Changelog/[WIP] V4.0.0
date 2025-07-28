@@ -1,0 +1,118 @@
+EN COURS DE DEVELOPPEMENT
+
+1. Infrastructure Docker & Déploiement
+Gestion des Environnements (Dev/Prod) :
+
+docker-compose.yml séparés : Créer un docker-compose.yml pour le développement (avec XDebug, volumes de code, etc.) et un docker-compose.prod.yml pour la production (optimisé, sans outils de dev).
+
+Variables d'environnement : Utiliser des fichiers .env pour chaque environnement (.env.local, .env.prod) et s'assurer que les secrets ne sont pas committés.
+
+Optimisation des images Docker :
+
+Implémenter des multi-stage builds dans les Dockerfile pour réduire la taille des images finales (supprimer les dépendances de compilation, les outils de dev).
+
+Utiliser des images de base plus petites si possible (ex: Alpine).
+
+Déploiement Continu (CI/CD) :
+
+Exemple de pipeline CI/CD : Fournir un fichier de configuration pour un outil de CI/CD (ex: GitHub Actions, GitLab CI, Jenkins) qui inclut :
+
+L'exécution des tests unitaires et fonctionnels.
+
+La construction des images Docker optimisées.
+
+Le déploiement (manuel ou semi-automatique) vers un environnement cible (ex: via SSH, Docker Swarm, Kubernetes).
+
+Mise à jour des dépendances : Mettre en place un processus clair pour la mise à jour des versions de Symfony, Vue, Node.js, PHP, Nginx, et des images Docker de base.
+
+Gestion des migrations de base de données : Inclure un script ou une commande Docker pour exécuter les migrations Doctrine (Symfony) de manière sécurisée lors du déploiement ou du démarrage des conteneurs.
+
+2. Sécurité
+Authentification et Autorisation :
+
+Exemple d'authentification JWT : Intégrer et configurer un bundle Symfony pour l'authentification JWT (lexik/jwt-authentication-bundle est un bon point de départ) avec un exemple d'utilisation côté Vue (stockage sécurisé du token).
+
+Gestion des rôles/permissions : Montrer comment implémenter des rôles (ex: ROLE_ADMIN, ROLE_USER) avec le système de sécurité de Symfony et comment les utiliser pour restreindre l'accès aux routes API et aux composants Vue.
+
+HTTPS :
+
+Configuration Nginx/Caddy : Inclure une configuration Nginx (ou Caddy pour la simplicité) pour servir l'application en HTTPS, même en développement (avec des certificats auto-signés générés par mkcert par exemple).
+
+Instructions pour la production : Fournir des indications pour l'intégration de Let's Encrypt ou d'autres certificats en production.
+
+Bonnes pratiques Docker :
+
+Exécuter les processus dans les conteneurs avec un utilisateur non-root.
+
+Limiter les privilèges des conteneurs.
+
+Utiliser des images officielles et à jour.
+
+Gestion des secrets : Recommander et, si possible, fournir un exemple d'utilisation de Docker secrets ou d'un système de gestion de secrets (Vault, Kubernetes Secrets) pour les informations sensibles en production.
+
+Protection CSRF/CORS : S'assurer que les configurations CORS sont correctement définies pour l'API Symfony et que des protections CSRF sont en place si nécessaire (pour les formulaires, bien que moins critique pour une API RESTful pure).
+
+3. Expérience de Développement (DX)
+Débogage :
+
+XDebug pour Symfony : Fournir une configuration XDebug fonctionnelle dans le conteneur PHP, avec des instructions claires pour se connecter depuis les IDE populaires (VS Code, PhpStorm).
+
+Vue DevTools : S'assurer que l'intégration des Vue DevTools est transparente.
+
+Hot-Reloading / Fast Refresh : Confirmer que le hot-reloading de Vue fonctionne sans problème dans l'environnement Docker pour un développement rapide du frontend.
+
+Tests :
+
+Tests Unitaires : Inclure des exemples de tests unitaires pour Symfony (PHPUnit) et Vue (Vitest/Jest).
+
+Tests Fonctionnels/Intégration : Ajouter des exemples de tests fonctionnels pour l'API Symfony (ex: via WebTestCase) et des tests d'intégration pour le frontend Vue (ex: Cypress, Playwright).
+
+Scripts de test : Des commandes npm run test et composer test qui exécutent les suites de tests dans les conteneurs appropriés.
+
+Linter & Formatter : Intégrer des outils comme ESLint/Prettier pour Vue/JS et PHP-CS-Fixer/PHPStan pour Symfony, avec des configurations recommandées et des scripts pour les exécuter.
+
+Base de données :
+
+Choix multiples : Faciliter le basculement entre différentes bases de données (PostgreSQL, MySQL) via des configurations Docker Compose alternatives.
+
+Données de démonstration (Fixtures) : Un script pour générer des données de démonstration pour le développement.
+
+4. Fonctionnalités et Exemples
+Module CRUD complet :
+
+Exemple concret : Créer un exemple de ressource simple (ex: Product, Task) avec :
+
+Entité Doctrine, Repository, Controller (API Symfony).
+
+Formulaire de création/édition, liste, vue détaillée (Frontend Vue).
+
+Validation des données côté Symfony et Vue.
+
+Cela servira de modèle pour les futures fonctionnalités.
+
+Gestion des Assets : Montrer comment gérer les assets statiques (images, fichiers) et leur servir via Nginx, ou des indications pour l'intégration de stockages externes (S3, etc.).
+
+Internationalisation (i18n) : Fournir les bases pour la mise en place de l'internationalisation côté Symfony (Translation component) et Vue (Vue I18n).
+
+Gestion des erreurs : Une page d'erreur 404/500 personnalisée côté frontend et une gestion cohérente des erreurs API (JSON API Errors).
+
+5. Documentation
+README.md enrichi :
+
+Vue d'ensemble de l'architecture : Expliquer les couches (Domain, Application, Infrastructure, UI) et leur rôle.
+
+Guide de démarrage rapide (mis à jour) : Instructions claires pour lancer le projet.
+
+Configuration des environnements : Détails sur le passage de dev à prod.
+
+Débogage : Comment configurer XDebug, etc.
+
+Tests : Comment exécuter les tests.
+
+Déploiement : Section dédiée aux stratégies de déploiement.
+
+FAQ / Dépannage : Réponses aux questions courantes et solutions aux problèmes fréquents.
+
+Directives de contribution : Si vous souhaitez encourager les contributions.
+
+Commentaires de code : S'assurer que le code est bien commenté, surtout dans les parties clés de l'architecture.

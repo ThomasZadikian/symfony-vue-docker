@@ -1,4 +1,4 @@
-#------- Create Symfony-vue scaffold version 2.0.0 -------#
+#------- Create Symfony-vue scaffold version 3.0.0 -------#
 
 A minimal scaffolding tool to quickly start a Symfony (API) + Vue (frontend) project with Vuetify.
 

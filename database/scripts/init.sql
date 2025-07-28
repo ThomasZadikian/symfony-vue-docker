@@ -4,5 +4,6 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO users (name)
-VALUES ('John Doe');
+INSERT INTO users (name; created_at)
+VALUES ('John Doe', DATE.NOW()), ('Jane Smith', DATE.NOW()), 
+       ('Alice Johnson', DATE.NOW()), ('Bob Brown', DATE.NOW());
